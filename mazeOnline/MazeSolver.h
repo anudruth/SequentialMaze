@@ -114,7 +114,7 @@ private:
 
 	void display()
 	{
-		_bmp.setPenColor(RGB(0, 255, 0));
+		_bmp.setPenColor(RGB(255, 255, 255));
 		_bmp.clear();
 		HDC dc = _bmp.getDC();
 		for (int y = 0; y < _s; y++)
@@ -148,7 +148,7 @@ private:
 				}
 			}
 		}
-
+		_bmp.saveBitmap("maze.png");
 		drawEndPoints(dc);
 		_bmp.setPenColor(RGB(255, 0, 0));
 
@@ -160,8 +160,8 @@ private:
 				BYTE d = _pts[x + yy];
 				if (!d) continue;
 
-				int nx = x * CELL_SIZE + 4,
-					ny = y * CELL_SIZE + 4;
+				int nx = x * CELL_SIZE + 1,
+					ny = y * CELL_SIZE + 1;
 
 				MoveToEx(dc, nx, ny, NULL);
 				switch (d)
@@ -174,14 +174,14 @@ private:
 			}
 		}
 
-		_bmp.saveBitmap("maze_s.bmp");
+		_bmp.saveBitmap("maze_s.png");
 		BitBlt(GetDC(GetConsoleWindow()), 10, 60, BMP_SIZE, BMP_SIZE, _bmp.getDC(), 0, 0, SRCCOPY);
 	}
 
 	void drawEndPoints(HDC dc)
 	{
 		RECT rc;
-		int x = 1 + _sx * CELL_SIZE, y = 1 + _sy * CELL_SIZE;
+		int x = _sx , y = _sy ;
 		SetRect(&rc, x, y, x + CELL_SIZE - 1, y + CELL_SIZE - 1);
 		FillRect(dc, &rc, (HBRUSH)GetStockObject(WHITE_BRUSH));
 		x = 1 + _ex * CELL_SIZE, y = 1 + _ey * CELL_SIZE;

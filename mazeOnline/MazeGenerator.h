@@ -31,6 +31,7 @@ private:
 		ZeroMemory(_world, _s * _s);
 		_ptX = rand() % _s; _ptY = rand() % _s;
 		carve();
+		
 	}
 
 	void carve()
