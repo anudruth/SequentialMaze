@@ -19,6 +19,8 @@ int main(int argc, char* argv[])
 	while (true)
 	{
 		cout << "Enter the maze size, an odd number bigger than 2 ( 0 to QUIT ): "; cin >> s;
+		
+		s = (s  / 2);
 		if (!s) return 0;
 		if (!(s & 1)) s++;
 		if (s >= 3)

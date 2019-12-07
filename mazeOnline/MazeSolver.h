@@ -148,7 +148,8 @@ private:
 				}
 			}
 		}
-		_bmp.saveBitmap("maze.png");
+		
+		_bmp.saveBitmap("../Maze/maze" + to_string(_s*2+1) + ".bmp");
 		drawEndPoints(dc);
 		_bmp.setPenColor(RGB(255, 0, 0));
 
@@ -174,7 +175,7 @@ private:
 			}
 		}
 
-		_bmp.saveBitmap("maze_s.png");
+		_bmp.saveBitmap("../Maze/maze" + to_string(_s*2+1) + "_s.bmp");
 		BitBlt(GetDC(GetConsoleWindow()), 10, 60, BMP_SIZE, BMP_SIZE, _bmp.getDC(), 0, 0, SRCCOPY);
 	}
 
